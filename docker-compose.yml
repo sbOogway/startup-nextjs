@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+
+  mysql:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  
+      MYSQL_DATABASE:  
+      MYSQL_USER: user  
+      MYSQL_PASSWORD: userpassword  
+    ports:
+      - "3306:3306"  
+    volumes:
+      - mysql_data:/var/lib/mysql  
+
+volumes:
+  mysql_data:  

@@ -1,26 +1,34 @@
+"use client";
+
 import Link from "next/link";
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // console.log("handling submit");
+  e.preventDefault();
+
+  console.log(e.nativeEvent.target[0].value);
+};
 
 const Hero = () => {
   return (
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="h-screen relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Free and Open-Source Next.js Template for Startup & SaaS
+                  From Youtube video to Odysee video
                 </h1>
+
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Startup is free Next.js template for startups and SaaS
-                  business websites comes with all the essential pages,
-                  components, and sections you need to launch a complete
-                  business website, built-with Next 13.x and Tailwind CSS.
+                  Tired of ads on Youtube? Use this tool to copy content from
+                  Youtube to Odysee and enjoy it adfree.
                 </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                {/* <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
                     href="https://nextjstemplates.com/templates/saas-starter-startup"
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
@@ -33,7 +41,21 @@ const Hero = () => {
                   >
                     Star on GitHub
                   </Link>
-                </div>
+                </div> */}
+                <form onSubmit={handleSubmit} className="flex gap-4">
+                  <input
+                    type="text"
+                    name="youtubeLink"
+                    placeholder="Youtube video link to upload to Odysee"
+                    className="mt-1 block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500"
+                  />
+                  <button
+                    type="submit"
+                    className="rounded bg-blue-500 px-4 py-2 font-semibold text-white transition duration-200 hover:bg-blue-600"
+                  >
+                    Upload
+                  </button>
+                </form>
               </div>
             </div>
           </div>
